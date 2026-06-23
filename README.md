@@ -294,13 +294,3 @@ Enmienda o modificación al protocolo de un ensayo.
    - AdverseEvent (eventos adversos)
 8. ProtocolAmendment registra cambios al protocolo del ensayo
 ```
-
----
-
-## Notas técnicas
-
-- Las **tablas de unión** (`Patient_ClinicalTrial`, `ResearcherClinicalTrial`, `ClinicalTrialCenter`, `TrialMedication`) implementan relaciones N:N entre entidades principales.
-- Los campos `email` y `contactEmail` tienen restricción `UNIQUE` para evitar duplicados.
-- `AdverseEvent.severity` es un entero; se recomienda documentar la escala (p.ej. 1–5).
-- `Appointment.attendedDate` está definido como `varchar(100)` en lugar de `datetime`; considerar cambiarlo a `datetime` para consistencia con `scheduleDate`.
-- `TrialMedication` concentra el protocolo de administración (dosis, frecuencia, vía), permitiendo que un mismo medicamento tenga distintos protocolos en diferentes ensayos.
