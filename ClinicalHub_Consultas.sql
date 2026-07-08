@@ -34,3 +34,47 @@ INNER JOIN Researcher r ON a.researcher_id = r.id
 INNER JOIN ResearchCenter rc ON a.researchCenter_id = rc.id
 LEFT JOIN AdverseEvent ae ON ae.appointment_id = a.id
 ORDER BY ct.title, p.last_name, a.visitNumber;
+
+
+-- Detalle de los ensayos activos, su patrocinador, fase y régimen de medicación
+SELECT 
+    ct.title AS trial_title,
+    s.name AS sponsor_name,
+    tp.name AS trial_phase,
+    m.name AS medication_name,
+    tm.dosage,
+    tm.route,
+    tm.frequency
+FROM ClinicalTrial ct
+INNER JOIN Sponsor s ON ct.sponsor_id = s.id
+INNER JOIN TrialPhase tp ON ct.TrialPhase_id = tp.id
+LEFT JOIN TrialMedication tm ON tm.ClinicalTrial_id = ct.id
+LEFT JOIN Medication m ON tm.Medication_id = m.id
+WHERE ct.status = 'Active'
+ORDER BY s.name, ct.title;
+
+-- Estadísticas de pacientes por ensayo clínico (Total, Activos, Screening y Retirados)
+SELECT 
+    ct.title AS trial_title,
+    COUNT(pct.patient_id) AS total_patients,
+    SUM(CASE WHEN pct.status = 'Active' THEN 1 ELSE 0 END) AS active_patients,
+    SUM(CASE WHEN pct.status = 'Screening' THEN 1 ELSE 0 END) AS screening_patients,
+    SUM(CASE WHEN pct.status = 'Withdrawn' THEN 1 ELSE 0 END) AS withdrawn_patients
+FROM ClinicalTrial ct
+LEFT JOIN Patient_ClinicalTrial pct ON ct.id = pct.trial_id
+GROUP BY ct.title
+ORDER BY total_patients DESC, ct.title;
+
+-- Distribución de pacientes por género y edad promedio en cada ensayo clínico
+SELECT 
+    ct.title AS trial_title,
+    p.gender,
+    COUNT(p.id) AS patient_count,
+    AVG(DATEDIFF(YEAR, p.date_birth, GETDATE())) AS average_age
+FROM ClinicalTrial ct
+INNER JOIN Patient_ClinicalTrial pct ON ct.id = pct.trial_id
+INNER JOIN Patient p ON pct.patient_id = p.id
+GROUP BY 
+    ct.title, 
+    p.gender
+ORDER BY ct.title, p.gender;
