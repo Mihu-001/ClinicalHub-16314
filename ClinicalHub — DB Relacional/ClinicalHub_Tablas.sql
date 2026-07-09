@@ -84,7 +84,6 @@ CREATE TABLE ResearchCenter
 )
 GO
 
-
 -- ==============================================================================
 -- NIVEL 1: Tablas que dependen únicamente de tablas de Nivel 0
 -- ==============================================================================
@@ -211,7 +210,6 @@ CREATE TABLE Appointment
 )
 GO
 
-
 -- ==============================================================================
 -- NIVEL 4: Tablas que dependen de Appointment (Nivel 3)
 -- ==============================================================================
@@ -242,7 +240,6 @@ CREATE TABLE LabResult
   CONSTRAINT PK_LabResult  PRIMARY KEY (id)
 )
 GO
-
 
 -- ==============================================================================
 -- FOREIGN KEYS
@@ -345,7 +342,6 @@ ALTER TABLE LabResult
     FOREIGN KEY (appointment_id) REFERENCES Appointment (id)
 GO
 
-
 -- ==============================================================================
 -- RESTRICCIONES UNIQUE (correos + reglas de negocio en tablas puente)
 -- ==============================================================================
@@ -387,6 +383,10 @@ ALTER TABLE Appointment
   ADD CONSTRAINT UQ_PatientTrial_Visit UNIQUE (patientClinicalTrial_id, visitNumber)
 GO
 
+-- cada inscripción tenga como máximo un solo ConsentForm
+ALTER TABLE ConsentForm
+  ADD CONSTRAINT UQ_ConsentForm_PatientClinicalTrial UNIQUE (patientClinicalTrial_id)
+GO
 
 -- ==============================================================================
 -- RESTRICCIONES CHECK (valores válidos y coherencia de fechas)
