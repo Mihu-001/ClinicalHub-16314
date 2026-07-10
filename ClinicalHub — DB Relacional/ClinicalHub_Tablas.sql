@@ -1,6 +1,4 @@
--- ==============================================================================
 -- ClinicalHub - Script COMPLETO de creación de base de datos
--- ==============================================================================
 -- Orden de ejecución pensado para simular un caso real:
 --   1) Crear la base de datos
 --   2) Crear tablas "base" (sin dependencias / catálogos)                -> Nivel 0
@@ -11,14 +9,12 @@
 --   7) Agregar restricciones UNIQUE compuestas (reglas de negocio)
 --   8) Agregar restricciones CHECK (valores válidos / coherencia)
 --   9) Crear índices sobre las columnas FK
--- ==============================================================================
 
 CREATE DATABASE ClinicalHub;
 GO
 
 USE ClinicalHub;
 GO
-
 
 -- ==============================================================================
 -- NIVEL 0: Tablas base (catálogos / entidades sin dependencias foráneas)
@@ -176,7 +172,6 @@ CREATE TABLE TrialMedication
 )
 GO
 
-
 -- ==============================================================================
 -- NIVEL 3: Tablas que dependen de Nivel 2
 -- ==============================================================================
@@ -243,8 +238,8 @@ GO
 
 -- ==============================================================================
 -- FOREIGN KEYS
--- (Se agregan al final, cuando TODAS las tablas ya existen. Así el orden de
---  creación de tablas nunca puede fallar por una referencia inexistente.)
+-- (Se agregan al final, cuando TODAS las tablas ya existen, para que no fallen por
+-- un referecia inexistente)
 -- ==============================================================================
 
 -- Researcher
@@ -447,7 +442,6 @@ ALTER TABLE Appointment
     CHECK (attendedDate IS NULL OR scheduleDate IS NULL OR attendedDate >= scheduleDate)
 GO
 
-
 -- ==============================================================================
 -- ÍNDICES SOBRE COLUMNAS FK (SQL Server no las indexa automáticamente)
 -- ==============================================================================
@@ -486,18 +480,3 @@ CREATE INDEX IX_AdverseEvent_Appointment ON AdverseEvent (appointment_id)
 GO
 CREATE INDEX IX_LabResult_Appointment ON LabResult (appointment_id)
 GO
-
-
--- ==============================================================================
--- FIN DEL SCRIPT
--- ==============================================================================
--- Resumen del orden real de dependencias:
--- Nivel 0 (sin FK):        Sponsor, TrialPhase, Medication, Patient, ResearchCenter
--- Nivel 1 (dependen de 0): Researcher, ClinicalTrial
--- Nivel 2 (dependen de 1): Patient_ClinicalTrial, ResearcherClinicalTrial,
---                          ClinicalTrialCenter, TrialMedication  <- tablas puente
--- Nivel 3 (dependen de 2): ConsentForm, Appointment
--- Nivel 4 (dependen de 3): AdverseEvent, LabResult
--- Las FKs, UNIQUE, CHECK e índices se agregan al final, una vez existen todas
--- las tablas, evitando cualquier error de referencia a objetos inexistentes.
--- ==============================================================================

@@ -1,41 +1,35 @@
---Eventos adversos graves, para revisar rápido qué pacientes tuvieron reacciones serias:
+-- Miguel
+-- Eventos adversos graves, para revisar rápido qué pacientes tuvieron reacciones serias:
 SELECT description, severity, onset_date
 FROM AdverseEvent
 WHERE severity >= 4
 ORDER BY severity DESC;
 
---Pacientes y el ensayo en el que están inscritos, con su estado de inscripción:
-SELECT 
-    p.first_name,
-    p.last_name,
-    ct.title AS trial_title,
-    pct.status AS enrollment_status,
-    pct.enrollment_date
-FROM Patient p, Patient_ClinicalTrial pct, ClinicalTrial ct
-WHERE p.id = pct.patient_id AND pct.trial_id = ct.id
-ORDER BY ct.title, p.last_name;
+-- Pacientes y el ensayo en el que están inscritos, con su estado de inscripción:
+SELECT P.first_name, P.last_name, CT.title AS trial_title, PCT.status AS enrollment_status, PCT.enrollment_date
+FROM Patient AS P, Patient_ClinicalTrial AS PCT, ClinicalTrial AS CT
+WHERE P.id = PCT.patient_id AND PCT.trial_id = CT.id
+ORDER BY CT.title, P.last_name;
 
---Detalle completo de cada cita: paciente, ensayo, investigador y centro, más el evento adverso si lo tuvo:
-SELECT 
-    p.first_name + ' ' + p.last_name AS patient_name,
-    ct.title AS trial_title,
-    r.first_name + ' ' + r.last_name AS researcher_name,
-    rc.name AS research_center,
-    a.visitNumber,
-    a.status AS appointment_status,
-    a.scheduleDate,
-    ae.description AS adverse_event,
-    ae.severity
-FROM Appointment a
-INNER JOIN Patient_ClinicalTrial pct ON a.patientClinicalTrial_id = pct.id
-INNER JOIN Patient p ON pct.patient_id = p.id
-INNER JOIN ClinicalTrial ct ON pct.trial_id = ct.id
-INNER JOIN Researcher r ON a.researcher_id = r.id
-INNER JOIN ResearchCenter rc ON a.researchCenter_id = rc.id
-LEFT JOIN AdverseEvent ae ON ae.appointment_id = a.id
-ORDER BY ct.title, p.last_name, a.visitNumber;
+-- Detalle completo de cada cita: paciente, ensayo, investigador y centro, más el evento adverso si lo tuvo:
+SELECT P.first_name + ' ' + P.last_name AS patient_name, CT.title AS trial_title, R.first_name + ' ' + R.last_name AS researcher_name,
+RC.name AS research_center, A.visitNumber, A.status AS appointment_status, A.scheduleDate, AE.description AS adverse_event, AE.severity
+FROM Appointment AS A
+    INNER JOIN Patient_ClinicalTrial AS PCT 
+    ON A.patientClinicalTrial_id = PCT.id
+        INNER JOIN Patient AS P 
+        ON PCT.patient_id = P.id
+            INNER JOIN ClinicalTrial AS CT 
+            ON PCT.trial_id = CT.id
+                INNER JOIN Researcher AS R 
+                ON A.researcher_id = R.id
+                    INNER JOIN ResearchCenter AS RC 
+                    ON A.researchCenter_id = RC.id
+                        LEFT JOIN AdverseEvent AS AE 
+                        ON AE.appointment_id = A.id
+ORDER BY CT.title, P.last_name, A.visitNumber;
 
-
+-- Drago
 -- Detalle de los ensayos activos, su patrocinador, fase y régimen de medicación
 SELECT 
     ct.title AS trial_title,

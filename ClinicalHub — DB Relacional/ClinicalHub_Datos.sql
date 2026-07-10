@@ -1,8 +1,7 @@
--- ==============================================================================
 -- ClinicalHub - Datos de prueba realistas
 -- Ejecutar DESPUES del script de creacion de tablas (ClinicalHub_Completo.sql)
 -- Los IDs asumen que las tablas estan vacias (IDENTITY arranca en 1)
--- ==============================================================================
+
 USE ClinicalHub;
 GO
 
