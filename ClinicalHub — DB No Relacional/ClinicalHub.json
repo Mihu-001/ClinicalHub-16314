@@ -1,0 +1,793 @@
+{
+  "modelName": "New Model",
+  "collections": [
+    {
+      "collectionName": "ClinicalTrial",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "primaryKey": false,
+          "required": false,
+          "GUID": "31a7f959-f961-497a-8779-c35053d86057",
+          "encrypt": false,
+          "error": {},
+          "childRelationships": [
+            "e40cd555-7249-499e-922c-55b026b3478e"
+          ]
+        },
+        {
+          "name": "tittle",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "bd0a7efc-725f-4d37-9aa8-4796fab555e0",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "status",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "04749f0a-b3b8-4ab6-aa8d-a3986a9678f9",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "description",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "c4102a3f-cff7-439c-adf0-ff0ec337f559",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "start_date",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "date",
+          "primaryKey": false,
+          "error": {},
+          "GUID": "36eec9ad-45e3-4f9e-80f9-7ee858a126f7"
+        },
+        {
+          "name": "recent_enrolled_patients",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "array",
+          "properties": [
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "document",
+              "properties": [
+                {
+                  "name": "patient_id",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "objectId",
+                  "error": {},
+                  "GUID": "be20d217-bc22-4ae9-8544-a84f550ab4cd",
+                  "relationshipType": "Foreign Key",
+                  "foreignCollection": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+                  "foreignField": [
+                    "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+                    "ff93f767-3573-4f43-b322-028d4e739eae"
+                  ],
+                  "parentRelationship": "6627af79-0e64-4f5d-a692-0ed185913935"
+                },
+                {
+                  "name": "first_name",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "string",
+                  "GUID": "d09122f7-0155-41cc-a291-672be3d4dfca",
+                  "required": true,
+                  "error": {}
+                },
+                {
+                  "name": "enrolled_date",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "date",
+                  "primaryKey": false,
+                  "error": {},
+                  "GUID": "b5ab5923-995b-428c-8bd0-20aed80e2b99"
+                }
+              ],
+              "additionalProperties": false,
+              "error": {},
+              "GUID": "143bff44-b2ba-4136-bbe6-c1ca798740be",
+              "arrayItem": true,
+              "encrypt": false
+            }
+          ],
+          "additionalItems": true,
+          "GUID": "77712461-0b77-49cc-bd08-b0e4e59a02d4",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "total_patients_count",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "numeric",
+          "GUID": "7d6e08e7-b142-45c1-a186-86079c6b4a8f",
+          "mode": "integer32",
+          "required": true,
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "b7fa22d8-0d74-452b-817d-fd4a013e55bd"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Strict",
+      "validationAction": "Error",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+      "bucketId": "f7999715-5546-4156-a6da-1eaf7468ed14",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "patient",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "error": {
+            "name": false,
+            "code": false
+          },
+          "GUID": "ff93f767-3573-4f43-b322-028d4e739eae",
+          "childRelationships": [
+            "6627af79-0e64-4f5d-a692-0ed185913935"
+          ]
+        },
+        {
+          "name": "first_name",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "178a8d16-3468-4829-8157-22899eab3f0a",
+          "foreignCollection": "",
+          "foreignField": [],
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "last_name",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "66ff9c6d-b073-4ab6-adc9-6d527685c524",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "blood_type",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "9f3189a0-8123-48b6-bfc8-a562bf5e4f94",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "active_clinical_trials",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "array",
+          "properties": [
+            {
+              "hackoladeMeta": {},
+              "isActivated": true,
+              "type": "document",
+              "properties": [
+                {
+                  "name": "trial_id",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "objectId",
+                  "error": {},
+                  "GUID": "e3d8481b-607e-4607-b4a1-bcd7803a182d",
+                  "relationshipType": "Foreign Key",
+                  "foreignCollection": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+                  "foreignField": [
+                    "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+                    "31a7f959-f961-497a-8779-c35053d86057"
+                  ],
+                  "parentRelationship": "e40cd555-7249-499e-922c-55b026b3478e"
+                },
+                {
+                  "name": "enrollment_status",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "string",
+                  "GUID": "27b8870c-df7b-42a3-9305-1d7aea577b13",
+                  "required": true,
+                  "error": {}
+                },
+                {
+                  "name": "enrollment_date",
+                  "hackoladeMeta": {},
+                  "isActivated": true,
+                  "type": "date",
+                  "primaryKey": false,
+                  "error": {},
+                  "GUID": "bf004ac0-a0fc-41ea-9b2b-2ab430738125"
+                }
+              ],
+              "additionalProperties": false,
+              "error": {},
+              "GUID": "cffb23c1-20fe-4ae2-b70f-dcfa5c5d58b2",
+              "arrayItem": true
+            }
+          ],
+          "additionalItems": true,
+          "GUID": "007eda1b-a5e0-4033-9e83-9a93d8316be5",
+          "required": true,
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "1e5a6951-6be6-400b-8972-0d044ca66ba5"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Strict",
+      "validationAction": "Error",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+      "bucketId": "f7999715-5546-4156-a6da-1eaf7468ed14",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "researcher",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "primaryKey": false,
+          "required": false,
+          "GUID": "ada61e38-94d6-41c6-bacc-13f23a2a3f93",
+          "encrypt": false,
+          "error": {},
+          "foreignCollection": "",
+          "foreignField": []
+        },
+        {
+          "name": "first_name",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "43743599-19d4-430b-83b2-68f4df28314b",
+          "foreignCollection": "",
+          "foreignField": [],
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "last_name",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "c43617a3-403e-4a3a-82dc-d6f52049e978",
+          "foreignCollection": "",
+          "foreignField": [],
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "specialization",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "04565716-ab35-40d1-bd95-c2fa79840d40",
+          "primaryKey": false,
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "research_center_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "error": {},
+          "GUID": "35d5cf88-f3d7-47c5-b10e-a993abcdf038",
+          "relationshipType": "Foreign Key",
+          "foreignCollection": "c34e340f-353d-4385-a7ae-be4dacf95373",
+          "foreignField": [
+            "c34e340f-353d-4385-a7ae-be4dacf95373",
+            "568a4b57-8ca8-472a-95f2-20d01ae7d63c"
+          ],
+          "parentRelationship": "f4d14796-8aab-447a-a137-fc575bb3d731"
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "bad15651-f57d-45ee-90ff-60f5e8107958"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Strict",
+      "validationAction": "Error",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "4d05abd3-93ed-45fe-aaf9-e13af2bba576",
+      "bucketId": "f7999715-5546-4156-a6da-1eaf7468ed14",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    },
+    {
+      "collectionName": "researchCenter",
+      "type": "object",
+      "properties": [
+        {
+          "name": "_id",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "objectId",
+          "error": {
+            "name": false,
+            "code": false
+          },
+          "GUID": "568a4b57-8ca8-472a-95f2-20d01ae7d63c",
+          "childRelationships": [
+            "f4d14796-8aab-447a-a137-fc575bb3d731"
+          ]
+        },
+        {
+          "name": "name",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "6298f419-b8d7-4be2-9394-e292525990f9",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "location",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "775f3ce7-d589-4a94-875e-5c05b49785f6",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "facility_type",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "590bb132-bd60-4d60-a95d-b253af5589a7",
+          "required": true,
+          "error": {}
+        }
+      ],
+      "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "cf4800b9-faeb-479a-b3eb-e98b194c8a09"
+      },
+      "isActivated": true,
+      "additionalProperties": false,
+      "validationLevel": "Strict",
+      "validationAction": "Error",
+      "storageEngineName": "WiredTiger",
+      "sharding": {
+        "unique": true,
+        "collation": "null"
+      },
+      "GUID": "c34e340f-353d-4385-a7ae-be4dacf95373",
+      "bucketId": "f7999715-5546-4156-a6da-1eaf7468ed14",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    }
+  ],
+  "buckets": [
+    {
+      "name": "ClinicalHub",
+      "type": "bucket",
+      "collectionIds": [
+        "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+        "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+        "4d05abd3-93ed-45fe-aaf9-e13af2bba576",
+        "c34e340f-353d-4385-a7ae-be4dacf95373"
+      ],
+      "backgroundColor": {
+        "r": 129,
+        "g": 212,
+        "b": 250,
+        "a": 1
+      },
+      "show": true,
+      "isActivated": true,
+      "GUID": "f7999715-5546-4156-a6da-1eaf7468ed14",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      }
+    }
+  ],
+  "views": [],
+  "relationships": [
+    {
+      "name": "fk_researchCenter__id_to_researcher_research_center_id",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "c34e340f-353d-4385-a7ae-be4dacf95373",
+          "568a4b57-8ca8-472a-95f2-20d01ae7d63c"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "4d05abd3-93ed-45fe-aaf9-e13af2bba576",
+          "35d5cf88-f3d7-47c5-b10e-a993abcdf038"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "c34e340f-353d-4385-a7ae-be4dacf95373",
+      "childCollection": "4d05abd3-93ed-45fe-aaf9-e13af2bba576",
+      "GUID": "f4d14796-8aab-447a-a137-fc575bb3d731",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "hackoladeStyles": {
+        "GUID": "82a61747-574d-45bb-9ade-853f37db794b",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1296.5999755859382,
+            "y": 1287.933308919275
+          },
+          {
+            "x": 1296.5999755859382,
+            "y": 1314.4643801405828
+          },
+          {
+            "x": 1296.3287846952182,
+            "y": 1314.4643801405828
+          },
+          {
+            "x": 1296.3287846952182,
+            "y": 1340.9954513618902
+          }
+        ],
+        "sides": [
+          "bottom",
+          "top"
+        ]
+      }
+    },
+    {
+      "name": "fk_patient__id_to_ClinicalTrial_recent_enrolled_patients.[0].patient_id",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+          "ff93f767-3573-4f43-b322-028d4e739eae"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+          "77712461-0b77-49cc-bd08-b0e4e59a02d4",
+          "143bff44-b2ba-4136-bbe6-c1ca798740be",
+          "be20d217-bc22-4ae9-8544-a84f550ab4cd"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "1",
+      "parentCollection": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+      "childCollection": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+      "GUID": "6627af79-0e64-4f5d-a692-0ed185913935",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "hackoladeStyles": {
+        "GUID": "a99a4e14-0758-418a-a84f-84d1795d2b7a",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1119.1999511718745,
+            "y": 978.3333333333328
+          },
+          {
+            "x": 1231.4666544596348,
+            "y": 978.3333333333328
+          },
+          {
+            "x": 1231.4666544596348,
+            "y": 963.533345540364
+          },
+          {
+            "x": 1343.7333577473953,
+            "y": 963.533345540364
+          }
+        ],
+        "sides": [
+          "right",
+          "left"
+        ]
+      }
+    },
+    {
+      "name": "fk_ClinicalTrial__id_to_patient_active_clinical_trials.[0].trial_id",
+      "relationshipType": "Foreign Key",
+      "parentField": [
+        [
+          "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+          "31a7f959-f961-497a-8779-c35053d86057"
+        ]
+      ],
+      "parentCardinality": "1",
+      "childField": [
+        [
+          "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+          "007eda1b-a5e0-4033-9e83-9a93d8316be5",
+          "cffb23c1-20fe-4ae2-b70f-dcfa5c5d58b2",
+          "e3d8481b-607e-4607-b4a1-bcd7803a182d"
+        ]
+      ],
+      "isActivated": true,
+      "childCardinality": "0..n",
+      "parentCollection": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+      "childCollection": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+      "GUID": "e40cd555-7249-499e-922c-55b026b3478e",
+      "hackoladeMeta": {
+        "validationErrors": {}
+      },
+      "hackoladeStyles": {
+        "GUID": "58d60807-9092-41e7-a16d-185a438c4ab0",
+        "autoPositioning": true,
+        "type": "Orthogonal",
+        "thickness": 2,
+        "color": "#79c4ff",
+        "dataType": "",
+        "shape": [
+          {
+            "x": 1343.7333577473953,
+            "y": 1030.533345540364
+          },
+          {
+            "x": 1231.4666544596348,
+            "y": 1030.533345540364
+          },
+          {
+            "x": 1231.4666544596348,
+            "y": 1060.666666666666
+          },
+          {
+            "x": 1119.1999511718745,
+            "y": 1060.666666666666
+          }
+        ],
+        "sides": [
+          "left",
+          "right"
+        ]
+      }
+    }
+  ],
+  "users": [],
+  "diagramViews": [],
+  "idToNameHashTable": {
+    "f7999715-5546-4156-a6da-1eaf7468ed14": "ClinicalHub",
+    "2790bfda-6dc1-431f-9e30-15fdfbfa39cf": "ClinicalTrial",
+    "31a7f959-f961-497a-8779-c35053d86057": "_id",
+    "bd0a7efc-725f-4d37-9aa8-4796fab555e0": "tittle",
+    "04749f0a-b3b8-4ab6-aa8d-a3986a9678f9": "status",
+    "c4102a3f-cff7-439c-adf0-ff0ec337f559": "description",
+    "36eec9ad-45e3-4f9e-80f9-7ee858a126f7": "start_date",
+    "77712461-0b77-49cc-bd08-b0e4e59a02d4": "recent_enrolled_patients",
+    "be20d217-bc22-4ae9-8544-a84f550ab4cd": "patient_id",
+    "d09122f7-0155-41cc-a291-672be3d4dfca": "first_name",
+    "b5ab5923-995b-428c-8bd0-20aed80e2b99": "enrolled_date",
+    "7d6e08e7-b142-45c1-a186-86079c6b4a8f": "total_patients_count",
+    "ca6bcaa8-dfc9-437d-b275-88f3561c67d2": "patient",
+    "ff93f767-3573-4f43-b322-028d4e739eae": "_id",
+    "178a8d16-3468-4829-8157-22899eab3f0a": "first_name",
+    "66ff9c6d-b073-4ab6-adc9-6d527685c524": "last_name",
+    "9f3189a0-8123-48b6-bfc8-a562bf5e4f94": "blood_type",
+    "007eda1b-a5e0-4033-9e83-9a93d8316be5": "active_clinical_trials",
+    "e3d8481b-607e-4607-b4a1-bcd7803a182d": "trial_id",
+    "27b8870c-df7b-42a3-9305-1d7aea577b13": "enrollment_status",
+    "bf004ac0-a0fc-41ea-9b2b-2ab430738125": "enrollment_date",
+    "4d05abd3-93ed-45fe-aaf9-e13af2bba576": "researcher",
+    "ada61e38-94d6-41c6-bacc-13f23a2a3f93": "_id",
+    "43743599-19d4-430b-83b2-68f4df28314b": "first_name",
+    "c43617a3-403e-4a3a-82dc-d6f52049e978": "last_name",
+    "04565716-ab35-40d1-bd95-c2fa79840d40": "specialization",
+    "c34e340f-353d-4385-a7ae-be4dacf95373": "researchCenter",
+    "6298f419-b8d7-4be2-9394-e292525990f9": "name",
+    "775f3ce7-d589-4a94-875e-5c05b49785f6": "location",
+    "590bb132-bd60-4d60-a95d-b253af5589a7": "facility_type",
+    "568a4b57-8ca8-472a-95f2-20d01ae7d63c": "_id",
+    "35d5cf88-f3d7-47c5-b10e-a993abcdf038": "research_center_id",
+    "f4d14796-8aab-447a-a137-fc575bb3d731": "fk_researchCenter__id_to_researcher_research_center_id",
+    "6627af79-0e64-4f5d-a692-0ed185913935": "fk_patient__id_to_ClinicalTrial_recent_enrolled_patients.[0].patient_id",
+    "e40cd555-7249-499e-922c-55b026b3478e": "fk_ClinicalTrial__id_to_patient_active_clinical_trials.[0].trial_id"
+  },
+  "definitions": {
+    "type": "definitions",
+    "properties": [],
+    "GUID": "cf7df085-69f7-43f1-b988-c6c2f400da17"
+  },
+  "polyglotDefinitions": {
+    "type": "polyglotDefinitions",
+    "properties": [],
+    "GUID": "6cea4a2a-fb2c-4206-b797-74751e717d0b"
+  },
+  "externalDefinitions": {
+    "type": "externalDefinitions",
+    "properties": [],
+    "GUID": "83788f5a-2270-4b27-98c8-e99cfd1bb41f"
+  },
+  "sources": [],
+  "decorativeSymbols": [],
+  "businessGlossaries": [],
+  "businessGlossaryTerms": [],
+  "dbVersion": "v7.x",
+  "dbVendor": "MongoDB",
+  "appTarget": "MONGODB",
+  "creationTS": "2026-07-06T22:27:10.108Z",
+  "GUID": "1ad8432d-8c6d-4fee-a1d5-47a6a2b823ac",
+  "isLineageEnabled": false,
+  "lastModifTS": "2026-07-10T17:01:09.970Z",
+  "persistenceSchemaVersion": "8",
+  "isCreatedByPlugin": true,
+  "pluginInformation": {
+    "pluginEngineVersion": "1.0.0"
+  },
+  "applicationInformation": {
+    "version": "8.12.2"
+  },
+  "hackoladeMeta": {},
+  "settings": {
+    "centralPane": {
+      "dbLevel": {
+        "erd": [
+          {
+            "GUID": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
+            "x": 832.1999511718744,
+            "y": 895.9999999999994,
+            "width": 287,
+            "height": 247,
+            "color": {}
+          },
+          {
+            "GUID": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
+            "x": 1343.7333577473953,
+            "y": 896.533345540364,
+            "width": 290,
+            "height": 201,
+            "color": {}
+          },
+          {
+            "GUID": "4d05abd3-93ed-45fe-aaf9-e13af2bba576",
+            "x": 1169.5999755859382,
+            "y": 1163.933308919275,
+            "width": 254,
+            "height": 124.00000000000006,
+            "color": {}
+          },
+          {
+            "GUID": "c34e340f-353d-4385-a7ae-be4dacf95373",
+            "x": 1176.3287846952182,
+            "y": 1340.9954513618902,
+            "width": 240,
+            "height": 102,
+            "color": {}
+          }
+        ],
+        "erdDefinitions": {
+          "erd": [],
+          "rootPath": [],
+          "entities": [],
+          "decorativeSymbols": []
+        },
+        "buckets": [
+          {
+            "x": 768.1999511718744,
+            "y": 831.9999999999994,
+            "GUID": "f7999715-5546-4156-a6da-1eaf7468ed14"
+          }
+        ],
+        "collapsedNodes": [],
+        "activeRelationship": "",
+        "activeRelationshipFields": {
+          "childField": [],
+          "parentField": []
+        },
+        "selectedCollections": [],
+        "displayColorPicker": false,
+        "graphView": {
+          "erd": [],
+          "buckets": [],
+          "decorativeSymbols": [],
+          "forceLayout": true,
+          "defaultLinkLength": 300,
+          "options": []
+        },
+        "diagramViews": [],
+        "decorativeSymbols": [],
+        "nestedCollectionsLayout": "horizontal",
+        "options": [
+          {
+            "autoWidth": false,
+            "autoHeight": false,
+            "GUID": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf"
+          },
+          {
+            "autoWidth": false,
+            "autoHeight": false,
+            "GUID": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2"
+          },
+          {
+            "autoWidth": false,
+            "autoHeight": false,
+            "GUID": "4d05abd3-93ed-45fe-aaf9-e13af2bba576"
+          },
+          {
+            "autoWidth": false,
+            "autoHeight": false,
+            "GUID": "c34e340f-353d-4385-a7ae-be4dacf95373"
+          }
+        ],
+        "relationshipUpdateDisabled": false
+      },
+      "collectionLevel": {},
+      "changed": false
+    },
+    "dtDiagram": {
+      "collapsedNodes": [],
+      "shouldDistributeCollections": false
+    }
+  }
+}
