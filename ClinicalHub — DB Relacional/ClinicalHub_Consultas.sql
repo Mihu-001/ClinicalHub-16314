@@ -3,13 +3,15 @@
 SELECT description, severity, onset_date
 FROM AdverseEvent
 WHERE severity >= 4
-ORDER BY severity DESC;
+ORDER BY severity DESC
+GO
 
 -- Pacientes y el ensayo en el que están inscritos, con su estado de inscripción:
 SELECT P.first_name, P.last_name, CT.title AS trial_title, PCT.status AS enrollment_status, PCT.enrollment_date
 FROM Patient AS P, Patient_ClinicalTrial AS PCT, ClinicalTrial AS CT
 WHERE P.id = PCT.patient_id AND PCT.trial_id = CT.id
-ORDER BY CT.title, P.last_name;
+ORDER BY CT.title, P.last_name
+GO
 
 -- Detalle completo de cada cita: paciente, ensayo, investigador y centro, más el evento adverso si lo tuvo:
 SELECT P.first_name + ' ' + P.last_name AS patient_name, CT.title AS trial_title, R.first_name + ' ' + R.last_name AS researcher_name,
@@ -27,7 +29,8 @@ FROM Appointment AS A
                     ON A.researchCenter_id = RC.id
                         LEFT JOIN AdverseEvent AS AE 
                         ON AE.appointment_id = A.id
-ORDER BY CT.title, P.last_name, A.visitNumber;
+ORDER BY CT.title, P.last_name, A.visitNumber
+GO
 
 -- Drago
 -- Detalle de los ensayos activos, su patrocinador, fase y régimen de medicación
