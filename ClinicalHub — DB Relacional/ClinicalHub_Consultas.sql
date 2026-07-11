@@ -7,8 +7,11 @@ ORDER BY severity DESC
 GO
 -- Pacientes y el ensayo en el que están inscritos, con su estado de inscripción:
 SELECT P.first_name, P.last_name, CT.title AS trial_title, PCT.status AS enrollment_status, PCT.enrollment_date
-FROM Patient AS P, Patient_ClinicalTrial AS PCT, ClinicalTrial AS CT
-WHERE P.id = PCT.patient_id AND PCT.trial_id = CT.id
+FROM Patient AS P
+    INNER JOIN Patient_ClinicalTrial AS PCT
+    ON P.id = PCT.patient_id
+        INNER JOIN ClinicalTrial AS CT
+        ON PCT.trial_id = CT.id
 ORDER BY CT.title, P.last_name
 GO
 -- Detalle completo de cada cita: paciente, ensayo, investigador y centro, más el evento adverso si lo tuvo:
@@ -39,8 +42,9 @@ ORDER BY start_date DESC
 GO
 -- Consulta multi-tabla: patrocinadores y sus ensayos
 SELECT S.name AS sponsor_name, CT.title AS trial_title, CT.status
-FROM Sponsor AS S, ClinicalTrial AS CT
-WHERE S.id = CT.sponsor_id
+FROM Sponsor AS S
+    INNER JOIN ClinicalTrial AS CT
+    ON S.id = CT.sponsor_id
 ORDER BY S.name
 GO
 -- Medicamentos usados por ensayo, con fase y patrocinador
@@ -66,8 +70,9 @@ ORDER BY total_researchers DESC
 GO
 -- Investigadores y su centro
 SELECT R.first_name, R.last_name, R.specialization, RC.name AS center_name, RC.country
-FROM Researcher AS R, ResearchCenter AS RC
-WHERE R.ResearchCenter_id = RC.id
+FROM Researcher AS R
+    INNER JOIN ResearchCenter AS RC
+    ON R.ResearchCenter_id = RC.id
 ORDER BY RC.name
 GO
 -- Asignaciones de investigadores a ensayos
@@ -90,8 +95,13 @@ WHERE measured_value > referenceMax OR measured_value < referenceMin
 GO
 -- Resultados de laboratorio con nombre de paciente
 SELECT P.first_name, P.last_name, LR.test_Name, LR.measured_value, LR.unit
-FROM Patient AS P, Patient_ClinicalTrial AS PCT, Appointment AS A, LabResult AS LR
-WHERE P.id = PCT.patient_id AND PCT.id = A.patientClinicalTrial_id AND A.id = LR.appointment_id
+FROM Patient AS P
+    INNER JOIN Patient_ClinicalTrial AS PCT
+    ON P.id = PCT.patient_id
+        INNER JOIN Appointment AS A
+        ON PCT.id = A.patientClinicalTrial_id
+            INNER JOIN LabResult AS LR
+            ON A.id = LR.appointment_id
 ORDER BY P.last_name
 GO
 -- Trazabilidad completa de laboratorio
@@ -116,8 +126,12 @@ WHERE revokedDate IS NOT NULL
 GO
 -- Pacientes retirados y su ensayo
 SELECT P.first_name, P.last_name, CT.title AS trial_title, PCT.enrollment_date
-FROM Patient AS P, Patient_ClinicalTrial AS PCT, ClinicalTrial AS CT
-WHERE P.id = PCT.patient_id AND PCT.trial_id = CT.id AND PCT.status = 'Withdrawn'
+FROM Patient AS P
+    INNER JOIN Patient_ClinicalTrial AS PCT
+    ON P.id = PCT.patient_id
+        INNER JOIN ClinicalTrial AS CT
+        ON PCT.trial_id = CT.id
+WHERE PCT.status = 'Withdrawn'
 GO
 -- Consentimiento + inscripción + ensayo + centro asignado
 SELECT P.first_name + ' ' + P.last_name AS patient_name, CT.title AS trial_title, CF.signedDate, CF.protocolVersion, CF.revokedDate, RC.name AS center_name
