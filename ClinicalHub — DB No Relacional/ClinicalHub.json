@@ -10,17 +10,17 @@
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "objectId",
-          "primaryKey": false,
+          "primaryKey": true,
           "required": false,
           "GUID": "31a7f959-f961-497a-8779-c35053d86057",
           "encrypt": false,
-          "error": {},
           "childRelationships": [
             "e40cd555-7249-499e-922c-55b026b3478e"
-          ]
+          ],
+          "error": {}
         },
         {
-          "name": "tittle",
+          "name": "title",
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "string",
@@ -38,12 +38,13 @@
           "error": {}
         },
         {
-          "name": "description",
+          "name": "end_date",
           "hackoladeMeta": {},
           "isActivated": true,
-          "type": "string",
-          "GUID": "c4102a3f-cff7-439c-adf0-ff0ec337f559",
-          "required": true,
+          "type": "date",
+          "primaryKey": false,
+          "GUID": "d3ff8877-792a-442a-9f22-3fcce1a799d0",
+          "required": false,
           "error": {}
         },
         {
@@ -52,8 +53,18 @@
           "isActivated": true,
           "type": "date",
           "primaryKey": false,
-          "error": {},
-          "GUID": "36eec9ad-45e3-4f9e-80f9-7ee858a126f7"
+          "GUID": "7f544e61-0774-45cc-902e-f1f68858d92c",
+          "required": false,
+          "error": {}
+        },
+        {
+          "name": "description",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "c4102a3f-cff7-439c-adf0-ff0ec337f559",
+          "required": false,
+          "error": {}
         },
         {
           "name": "recent_enrolled_patients",
@@ -152,14 +163,12 @@
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "objectId",
-          "error": {
-            "name": false,
-            "code": false
-          },
           "GUID": "ff93f767-3573-4f43-b322-028d4e739eae",
           "childRelationships": [
             "6627af79-0e64-4f5d-a692-0ed185913935"
-          ]
+          ],
+          "primaryKey": true,
+          "error": {}
         },
         {
           "name": "first_name",
@@ -180,6 +189,25 @@
           "GUID": "66ff9c6d-b073-4ab6-adc9-6d527685c524",
           "required": true,
           "error": {}
+        },
+        {
+          "name": "gender",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "e251694e-c2c3-49a7-954e-aa504db36d7c",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "date_birth",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "date",
+          "primaryKey": false,
+          "error": {},
+          "required": true,
+          "GUID": "b8c2a1d7-1e74-4d5f-8948-ae9b3eb08d82"
         },
         {
           "name": "blood_type",
@@ -245,6 +273,15 @@
           "GUID": "007eda1b-a5e0-4033-9e83-9a93d8316be5",
           "required": true,
           "error": {}
+        },
+        {
+          "name": "contactEmail",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "fe6938ad-cba0-49f3-aca8-4ca180effaa2",
+          "required": true,
+          "error": {}
         }
       ],
       "definitions": {
@@ -276,13 +313,13 @@
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "objectId",
-          "primaryKey": false,
+          "primaryKey": true,
           "required": false,
           "GUID": "ada61e38-94d6-41c6-bacc-13f23a2a3f93",
           "encrypt": false,
-          "error": {},
           "foreignCollection": "",
-          "foreignField": []
+          "foreignField": [],
+          "error": {}
         },
         {
           "name": "first_name",
@@ -321,7 +358,6 @@
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "objectId",
-          "error": {},
           "GUID": "35d5cf88-f3d7-47c5-b10e-a993abcdf038",
           "relationshipType": "Foreign Key",
           "foreignCollection": "c34e340f-353d-4385-a7ae-be4dacf95373",
@@ -329,7 +365,26 @@
             "c34e340f-353d-4385-a7ae-be4dacf95373",
             "568a4b57-8ca8-472a-95f2-20d01ae7d63c"
           ],
-          "parentRelationship": "f4d14796-8aab-447a-a137-fc575bb3d731"
+          "parentRelationship": "f4d14796-8aab-447a-a137-fc575bb3d731",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "email",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "ab797e8c-4a64-4e85-b5c2-3c1b7080de04",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "role",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "0e20b3de-d51e-4e9c-843d-fdf19370e3cd",
+          "error": {}
         }
       ],
       "definitions": {
@@ -361,14 +416,13 @@
           "hackoladeMeta": {},
           "isActivated": true,
           "type": "objectId",
-          "error": {
-            "name": false,
-            "code": false
-          },
           "GUID": "568a4b57-8ca8-472a-95f2-20d01ae7d63c",
           "childRelationships": [
             "f4d14796-8aab-447a-a137-fc575bb3d731"
-          ]
+          ],
+          "required": false,
+          "primaryKey": true,
+          "error": {}
         },
         {
           "name": "name",
@@ -394,6 +448,15 @@
           "isActivated": true,
           "type": "string",
           "GUID": "590bb132-bd60-4d60-a95d-b253af5589a7",
+          "required": true,
+          "error": {}
+        },
+        {
+          "name": "contactEmail",
+          "hackoladeMeta": {},
+          "isActivated": true,
+          "type": "string",
+          "GUID": "eb636b8a-287c-4a5c-a083-89dc62c7fc8c",
           "required": true,
           "error": {}
         }
@@ -462,7 +525,7 @@
         ]
       ],
       "isActivated": true,
-      "childCardinality": "0..n",
+      "childCardinality": "1..n",
       "parentCollection": "c34e340f-353d-4385-a7ae-be4dacf95373",
       "childCollection": "4d05abd3-93ed-45fe-aaf9-e13af2bba576",
       "GUID": "f4d14796-8aab-447a-a137-fc575bb3d731",
@@ -478,20 +541,20 @@
         "dataType": "",
         "shape": [
           {
-            "x": 1296.5999755859382,
-            "y": 1287.933308919275
+            "x": 1297.266642252605,
+            "y": 1329.2666422526083
           },
           {
-            "x": 1296.5999755859382,
-            "y": 1314.4643801405828
+            "x": 1297.266642252605,
+            "y": 1367.813044382433
           },
           {
-            "x": 1296.3287846952182,
-            "y": 1314.4643801405828
+            "x": 1300.3594465122553,
+            "y": 1367.813044382433
           },
           {
-            "x": 1296.3287846952182,
-            "y": 1340.9954513618902
+            "x": 1300.3594465122553,
+            "y": 1406.3594465122574
           }
         ],
         "sides": [
@@ -519,7 +582,7 @@
         ]
       ],
       "isActivated": true,
-      "childCardinality": "1",
+      "childCardinality": "1..n",
       "parentCollection": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
       "childCollection": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
       "GUID": "6627af79-0e64-4f5d-a692-0ed185913935",
@@ -535,20 +598,20 @@
         "dataType": "",
         "shape": [
           {
-            "x": 1119.1999511718745,
-            "y": 978.3333333333328
+            "x": 1117.8359560215044,
+            "y": 973.5466505012323
           },
           {
-            "x": 1231.4666544596348,
-            "y": 978.3333333333328
+            "x": 1247.8345962640733,
+            "y": 973.5466505012323
           },
           {
-            "x": 1231.4666544596348,
-            "y": 963.533345540364
+            "x": 1247.8345962640733,
+            "y": 967.0889010959196
           },
           {
-            "x": 1343.7333577473953,
-            "y": 963.533345540364
+            "x": 1377.8332365066422,
+            "y": 967.0889010959196
           }
         ],
         "sides": [
@@ -576,7 +639,7 @@
         ]
       ],
       "isActivated": true,
-      "childCardinality": "0..n",
+      "childCardinality": "1..n",
       "parentCollection": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
       "childCollection": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
       "GUID": "e40cd555-7249-499e-922c-55b026b3478e",
@@ -592,20 +655,20 @@
         "dataType": "",
         "shape": [
           {
-            "x": 1343.7333577473953,
-            "y": 1030.533345540364
+            "x": 1377.8332365066422,
+            "y": 1054.0123984559136
           },
           {
-            "x": 1231.4666544596348,
-            "y": 1030.533345540364
+            "x": 1247.8345962640733,
+            "y": 1054.0123984559136
           },
           {
-            "x": 1231.4666544596348,
-            "y": 1060.666666666666
+            "x": 1247.8345962640733,
+            "y": 1056.5492816039446
           },
           {
-            "x": 1119.1999511718745,
-            "y": 1060.666666666666
+            "x": 1117.8359560215044,
+            "y": 1056.5492816039446
           }
         ],
         "sides": [
@@ -621,10 +684,9 @@
     "f7999715-5546-4156-a6da-1eaf7468ed14": "ClinicalHub",
     "2790bfda-6dc1-431f-9e30-15fdfbfa39cf": "ClinicalTrial",
     "31a7f959-f961-497a-8779-c35053d86057": "_id",
-    "bd0a7efc-725f-4d37-9aa8-4796fab555e0": "tittle",
+    "bd0a7efc-725f-4d37-9aa8-4796fab555e0": "title",
     "04749f0a-b3b8-4ab6-aa8d-a3986a9678f9": "status",
     "c4102a3f-cff7-439c-adf0-ff0ec337f559": "description",
-    "36eec9ad-45e3-4f9e-80f9-7ee858a126f7": "start_date",
     "77712461-0b77-49cc-bd08-b0e4e59a02d4": "recent_enrolled_patients",
     "be20d217-bc22-4ae9-8544-a84f550ab4cd": "patient_id",
     "d09122f7-0155-41cc-a291-672be3d4dfca": "first_name",
@@ -652,7 +714,15 @@
     "35d5cf88-f3d7-47c5-b10e-a993abcdf038": "research_center_id",
     "f4d14796-8aab-447a-a137-fc575bb3d731": "fk_researchCenter__id_to_researcher_research_center_id",
     "6627af79-0e64-4f5d-a692-0ed185913935": "fk_patient__id_to_ClinicalTrial_recent_enrolled_patients.[0].patient_id",
-    "e40cd555-7249-499e-922c-55b026b3478e": "fk_ClinicalTrial__id_to_patient_active_clinical_trials.[0].trial_id"
+    "e40cd555-7249-499e-922c-55b026b3478e": "fk_ClinicalTrial__id_to_patient_active_clinical_trials.[0].trial_id",
+    "b8c2a1d7-1e74-4d5f-8948-ae9b3eb08d82": "date_birth",
+    "e251694e-c2c3-49a7-954e-aa504db36d7c": "gender",
+    "fe6938ad-cba0-49f3-aca8-4ca180effaa2": "contactEmail",
+    "7f544e61-0774-45cc-902e-f1f68858d92c": "start_date",
+    "d3ff8877-792a-442a-9f22-3fcce1a799d0": "end_date",
+    "ab797e8c-4a64-4e85-b5c2-3c1b7080de04": "email",
+    "0e20b3de-d51e-4e9c-843d-fdf19370e3cd": "role",
+    "eb636b8a-287c-4a5c-a083-89dc62c7fc8c": "contactEmail"
   },
   "definitions": {
     "type": "definitions",
@@ -679,7 +749,7 @@
   "creationTS": "2026-07-06T22:27:10.108Z",
   "GUID": "1ad8432d-8c6d-4fee-a1d5-47a6a2b823ac",
   "isLineageEnabled": false,
-  "lastModifTS": "2026-07-10T17:01:09.970Z",
+  "lastModifTS": "2026-07-11T00:19:02.714Z",
   "persistenceSchemaVersion": "8",
   "isCreatedByPlugin": true,
   "pluginInformation": {
@@ -695,35 +765,41 @@
         "erd": [
           {
             "GUID": "2790bfda-6dc1-431f-9e30-15fdfbfa39cf",
-            "x": 832.1999511718744,
-            "y": 895.9999999999994,
+            "x": 830.8359560215046,
+            "y": 890.5440193985199,
             "width": 287,
-            "height": 247,
+            "height": 249.0078933081371,
             "color": {}
           },
           {
             "GUID": "ca6bcaa8-dfc9-437d-b275-88f3561c67d2",
-            "x": 1343.7333577473953,
-            "y": 896.533345540364,
-            "width": 290,
-            "height": 201,
-            "color": {}
+            "x": 1377.8332365066422,
+            "y": 880.1654037359256,
+            "width": 292.72799030073975,
+            "height": 260.77049207998215,
+            "color": {
+              "hex": "#ce93d8"
+            }
           },
           {
             "GUID": "4d05abd3-93ed-45fe-aaf9-e13af2bba576",
             "x": 1169.5999755859382,
-            "y": 1163.933308919275,
-            "width": 254,
-            "height": 124.00000000000006,
-            "color": {}
+            "y": 1162.5999755859416,
+            "width": 255.33333333333334,
+            "height": 166.66666666666683,
+            "color": {
+              "hex": "#4caf50"
+            }
           },
           {
             "GUID": "c34e340f-353d-4385-a7ae-be4dacf95373",
-            "x": 1176.3287846952182,
-            "y": 1340.9954513618902,
-            "width": 240,
-            "height": 102,
-            "color": {}
+            "x": 1176.3594465122553,
+            "y": 1406.3594465122574,
+            "width": 247.99999999999994,
+            "height": 123.33333333333334,
+            "color": {
+              "hex": "#4caf50"
+            }
           }
         ],
         "erdDefinitions": {
@@ -734,8 +810,8 @@
         },
         "buckets": [
           {
-            "x": 768.1999511718744,
-            "y": 831.9999999999994,
+            "x": 766.8359560215046,
+            "y": 816.1654037359256,
             "GUID": "f7999715-5546-4156-a6da-1eaf7468ed14"
           }
         ],
